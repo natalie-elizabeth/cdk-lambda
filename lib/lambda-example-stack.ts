@@ -10,9 +10,9 @@ export class LambdaExampleStack extends cdk.Stack {
 
     // The code that defines your stack goes here
     // Create Lamdba function
-    const sfLambdaFunction = new lambda.Function(
+    const natLambdaFunction = new lambda.Function(
       this,
-      "StorefrontLambdaFunc",
+      "NatalieLambdaFunc",
       {
         code: lambda.Code.asset(path.join(__dirname, '../lambda')),
         handler: 'example.handler',
@@ -26,6 +26,6 @@ export class LambdaExampleStack extends cdk.Stack {
         schedule: Schedule.expression('cron(0 18 ? * MON-FRI *)')
       });
 
-    rule.addTarget(new LambdaFunction(sfLambdaFunction))
+    rule.addTarget(new LambdaFunction(natLambdaFunction))
   }
 }
